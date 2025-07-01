@@ -1,0 +1,129 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tuition Registration</title>
+    <link rel="stylesheet" href="{% static 'tuition_app/css/styles.css' %}">
+    <style>
+.subject-checkboxes {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 15px;
+            min-height: 100px; /* Ensure visibility */
+            border: 1px solid #ccc; /* Debug border */
+            padding: 10px;
+        }
+        .subject-checkboxes label {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 16px;
+        }
+        .subject-checkboxes input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+        }
+    </style>
+</head>
+<body>
+    <button id="dark-mode" class="dark-mode-toggle">🌙</button>
+    <div class="container">
+        <h1>STUDENT REGISTRATION</h1>
+        <form id="registration-form" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div>
+            {{ form.name.label_tag }} {{ form.name }} {{ form.name.errors }}
+        </div>
+        <div>
+            {{ form.dob.label_tag }} {{ form.dob }} {{ form.dob.errors }}
+        </div>
+        <div>
+            {{ form.father_name.label_tag }} {{ form.father_name }} {{ form.father_name.errors }}
+        </div>
+        <div>
+            {{ form.father_phone.label_tag }} {{ form.father_phone }} {{ form.father_phone.errors }}
+        </div>
+        <div>
+            {{ form.father_occupation.label_tag }} {{ form.father_occupation }} {{ form.father_occupation.errors }}
+        </div>
+        <div>
+            {{ form.mother_name.label_tag }} {{ form.mother_name }} {{ form.mother_name.errors }}
+        </div>
+        <div>
+            {{ form.mother_phone.label_tag }} {{ form.mother_phone }} {{ form.mother_phone.errors }}
+        </div>
+        <div>
+            {{ form.mother_occupation.label_tag }} {{ form.mother_occupation }} {{ form.mother_occupation.errors }}
+        </div>
+        <div>
+            {{ form.email.label_tag }} {{ form.email }} {{ form.email.errors }}
+        </div>
+        <div>
+            {{ form.phone.label_tag }} {{ form.phone }} {{ form.phone.errors }}
+        </div>
+        <div>
+            {{ form.address.label_tag }} {{ form.address }} {{ form.address.errors }}
+        </div>
+        <div>
+            {{ form.img.label_tag }} {{ form.img }} {{ form.img.errors }}
+        </div>
+        <div>
+            {{ form.standard.label_tag }} {{ form.standard }} {{ form.standard.errors }}
+        </div>
+        <div>
+            {{ form.board.label_tag }} {{ form.board }} {{ form.board.errors }}
+        </div>
+        <div id="school-dropdown-field">
+            {{ form.school.label_tag }} {{ form.school }} {{ form.school.errors }}
+        </div>
+        <div id="school-text-field" style="display: none;">
+            {{ form.school_text.label_tag }} {{ form.school_text }} {{ form.school_text.errors }}
+        </div>
+        <div>
+            {{ form.branch.label_tag }} {{ form.branch }} {{ form.branch.errors }}
+        </div>
+        <p>
+                {{ form.subject.label_tag }}
+                <div class="subject-checkboxes">
+                    {{ form.subject }}
+                </div>
+                {{ form.subject.errors }}
+            </p>
+        <div>
+            {{ form.fees.label_tag }} {{ form.fees }} {{ form.fees.errors }}
+        </div>
+        <div>
+            {{ form.fee_structure.label_tag }} {{ form.fee_structure }} {{ form.fee_structure.errors }}
+        </div>
+        <div>
+            {{ form.installment_plan.label_tag }} {{ form.installment_plan }} {{ form.installment_plan.errors }}
+        </div>
+        <div id="installment-fields" style="display: none;">
+            <div>
+                {{ form.amount1.label_tag }} {{ form.amount1 }} {{ form.amount1.errors }}
+            </div>
+            <div>
+                {{ form.payment_mode1.label_tag }} {{ form.payment_mode1 }} {{ form.payment_mode1.errors }}
+            </div>
+            <div>
+                {{ form.payment_proof1.label_tag }} {{ form.payment_proof1 }} {{ form.payment_proof1.errors }}
+            </div>
+        </div>
+        <p class="qr">
+            <img src="{% static 'tuition_app/imgs/qr.png' %}" alt="Payment Information" width="300px" height="300px">
+        </p>
+        <div style="display: none;">
+            {{ form.discount.label_tag }} {{ form.discount }} {{ form.discount.errors }}
+            {{ form.amount2.label_tag }} {{ form.amount2 }} {{ form.amount2.errors }}
+            {{ form.payment_mode2.label_tag }} {{ form.payment_mode2 }} {{ form.payment_mode2.errors }}
+            {{ form.payment_proof2.label_tag }} {{ form.payment_proof2 }} {{ form.payment_proof2.errors }}
+            {{ form.full_fee_paid.label_tag }} {{ form.full_fee_paid }} {{ form.full_fee_paid.errors }}
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+    <script src="{% static 'tuition_app/js/script.js' %}"></script>
+</body>
+</html>
